@@ -43,7 +43,7 @@ qint16 MainWindow::socket_connect()
 {
     if ( ip.isEmpty() | port > 9999 )
         return ERROR_USER_INPUT;
-    if ( socket->bind(QHostAddress("192.168.1.216"), port) )
+    if ( socket->bind(QHostAddress("192.168.1.216"), (quint16)8499) )
         return ERROR_NO_ERROR;
     else {
         connect_state = true;

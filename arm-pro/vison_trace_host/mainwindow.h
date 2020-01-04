@@ -9,7 +9,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 
 #define             PYTHON_IP               (tr("127.0.0.1"))
-#define             PYTHON_PORT             ((quint16)8399)
+#define             PYTHON_PORT             ((quint16)8877)
 
 #define             HOST_IP                 (tr("192.168.1.216"))
 #define             HOST_PORT               ((quint16)8877)

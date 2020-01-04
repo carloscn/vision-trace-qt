@@ -35,7 +35,7 @@ qint16 MainWindow::socket_connect()
 {
     if ( ip.isEmpty() | port > 9999 )
         return ERROR_USER_INPUT;
-    if ( socket->bind(QHostAddress(PYTHON_IP), port) )
+    if ( socket->bind(QHostAddress(PYTHON_IP), (quint16)8399) )
         return ERROR_NO_ERROR;
     else {
         connect_state = true;
