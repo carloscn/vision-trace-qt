@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     serial = new QSerialPort();
     socket = new QUdpSocket();
     connect_state  =  false;
-    this->port = HOST_PORT;
+    this->port = PYTHON_PORT;
     this->ip = HOST_IP;
     socket_connect();
     connect(socket,                 \
@@ -35,7 +35,7 @@ qint16 MainWindow::socket_connect()
 {
     if ( ip.isEmpty() | port > 9999 )
         return ERROR_USER_INPUT;
-    if ( socket->bind(QHostAddress::AnyIPv4, port) )
+    if ( socket->bind(QHostAddress(PYTHON_IP), port) )
         return ERROR_NO_ERROR;
     else {
         connect_state = true;
@@ -53,7 +53,7 @@ void MainWindow::socket_disconnect()
 void MainWindow::write_socket(QByteArray array)
 {
     quint64 len;
-    len = socket->writeDatagram( array, QHostAddress("192.168.1.216"), this->port );
+    len = socket->writeDatagram( array, QHostAddress(PYTHON_IP), this->port );
     if (len != array.length() ) {
         qDebug() << "udp retransmit!";
     }
@@ -64,7 +64,7 @@ void MainWindow::write_socket(quint8 *buffer, quint32 len)
     quint64 sendLen;
     QByteArray array;
     array.append((char*)buffer , len );
-    sendLen = socket->writeDatagram((char*)buffer, len, QHostAddress("192.168.1.216"), HOST_PORT);
+    sendLen = socket->writeDatagram((char*)buffer, len, QHostAddress(PYTHON_IP), this->port);
 }
 
 void MainWindow::on_read_network()

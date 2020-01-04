@@ -8,12 +8,16 @@
 #include <QMessageBox>
 #include <QtSerialPort/QSerialPortInfo>
 
-#define             HOST_IP                 (tr("192.168.1.237"))
+#define             PYTHON_IP               (tr("127.0.0.1"))
+#define             PYTHON_PORT             ((quint16)8399)
+
+#define             HOST_IP                 (tr("192.168.1.216"))
 #define             HOST_PORT               ((quint16)8877)
 #define             SEND_RETRY              10
 #define             ERROR_USER_INPUT            ((qint16)0x01)
 #define             ERROR_NO_ERROR              ((qint16)0x00)
 #define             ERROR_SYSTEM_NETWORK        ((qint16)0x02)
+
 #define             CMD_ALTER_ID            0x03
 #define             CMD_UP                  0x01
 #define             CMD_DOWN                0x02
